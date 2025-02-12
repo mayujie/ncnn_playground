@@ -3,7 +3,7 @@ import torch
 import pickle
 
 
-list_shape = [512, 256, 224]
+list_shape = [512, 384, 256, 224, 128]
 
 for item_shape in list_shape:
     x = torch.randn(1, 3, item_shape, item_shape)

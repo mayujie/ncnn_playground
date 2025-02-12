@@ -3,6 +3,10 @@ ncnn
 pnnx
 torchvision==0.20.1
 torchaudio==2.5.1
+onnx
+onnxruntime
+onnx-simplifier
+onnxsim
 #torch --find-links https://download.pytorch.org/whl/cpu
 #torchvision --find-links https://download.pytorch.org/whl/cpu
 #torchaudio --find-links https://download.pytorch.org/whl/cpu
