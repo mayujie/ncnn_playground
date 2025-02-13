@@ -6,11 +6,13 @@ The repository which play with ncnn framework
 
 [python wrapper of ncnn](https://github.com/Tencent/ncnn/tree/master/python)
 
-[use ncnn with pytorch or onnx](https://github.com/Tencent/ncnn/wiki/use-ncnn-with-pytorch-or-onnx#how-to-use-pnnx)
-
 ### Download & Build status
 
 [how to build ncnn library](https://github.com/Tencent/ncnn/wiki/how-to-build)
+
+[build ncnn library samples](https://github.com/Tencent/ncnn/blob/master/build.sh)
+
+[build-android ncnn library samples](https://github.com/Tencent/ncnn/blob/master/build-android.cmd)
 
 ```commandline
 sudo apt install build-essential 
@@ -37,9 +39,9 @@ https://github.com/Tencent/ncnn/tree/master/tools/quantize
 
 [pnnx (PyTorch Neural Network eXchange)](https://github.com/pnnx/pnnx)
 
-[pnnx documentation read more](https://github.com/Tencent/ncnn/tree/master/tools/pnnx)
+[use ncnn with pytorch or onnx (how to use pnnx)](https://github.com/Tencent/ncnn/wiki/use-ncnn-with-pytorch-or-onnx#how-to-use-pnnx)
 
-[The current implementation using pnnx](https://github.com/Tencent/ncnn/tree/master/tools/pnnx)
+[pnnx documentation read more](https://github.com/Tencent/ncnn/tree/master/tools/pnnx)
 
 ## 3.onnx-simplifier & onnxsim
 
@@ -47,6 +49,21 @@ https://github.com/Tencent/ncnn/tree/master/tools/quantize
 
 ## Reference issues
 
-- https://github.com/pnnx/pnnx/issues/14
-- https://github.com/pnnx/pnnx/issues/44
-- https://github.com/Tencent/ncnn/issues/5570
+pnnx
+
+- https://github.com/pnnx/pnnx/issues/14 use bash
+- https://github.com/pnnx/pnnx/issues/44 pnnx convert command
+- https://github.com/Tencent/ncnn/issues/5570 pnnx convert
+
+ncnn
+
+- https://github.com/Tencent/ncnn/issues/2070 benchncnn benchmark 1
+- https://github.com/Tencent/ncnn/issues/3662 benchncnn benchmark 2
+
+tflite
+
+- [tflite benchmark tools](https://ai.google.dev/edge/litert/models/measurement)
+
+[Armv8 Neon technology](https://developer.arm.com/documentation/102474/0100/Fundamentals-of-Armv8-Neon-technology)
+
+[cmake argument CPU architecture](https://github.com/Tencent/ncnn/blob/23890900c2a92a0932eba629d3c0bdbbc20808de/CMakeLists.txt#L267)

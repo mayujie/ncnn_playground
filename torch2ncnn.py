@@ -11,11 +11,11 @@ from torchvision.models.vision_transformer import vit_b_16
 ss = models.list_models()
 
 list_torch_models = [
-    # resnet18,
-    # resnet50,
-    # mobilenet_v2,
-    # efficientnet_b0,
-    vit_b_16
+    resnet18,
+    resnet50,
+    mobilenet_v2,
+    efficientnet_b0,
+    # vit_b_16
 ]
 for torch_model in list_torch_models:
     model = torch_model(pretrained=False)
@@ -33,6 +33,7 @@ for torch_model in list_torch_models:
         inputs=x,
         # device='gpu',
         fp16=False,
+        optlevel=2,
     )
 
     # use tuple for model with multiple inputs
