@@ -8,8 +8,6 @@ from torchvision.models import mobilenet_v2
 from torchvision.models.efficientnet import efficientnet_b0
 from torchvision.models.vision_transformer import vit_b_16
 
-ss = models.list_models()
-
 list_torch_models = [
     resnet18,
     resnet50,
@@ -17,15 +15,16 @@ list_torch_models = [
     efficientnet_b0,
     # vit_b_16
 ]
+
+save_dir = "outputs"
+if not os.path.exists(save_dir):
+    os.makedirs(save_dir, exist_ok=True)
+
 for torch_model in list_torch_models:
     model = torch_model(pretrained=False)
     model.eval()
 
     x = torch.rand(1, 3, 224, 224)
-
-    save_dir = "outputs"
-    if not os.path.exists(save_dir):
-        os.makedirs(save_dir, exist_ok=True)
 
     opt_model = pnnx.export(
         model,
