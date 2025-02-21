@@ -35,6 +35,8 @@ sudo apt install libopencv-dev
 
 https://github.com/Tencent/ncnn/tree/master/tools/quantize
 
+https://github.com/Tencent/ncnn/blob/master/docs/how-to-use-and-FAQ/quantized-int8-inference.md
+
 ## 2.pnnx
 
 pnnx convert command: `pnnx vit_b16.onnx "inputshape=[1,3,224,224]"`

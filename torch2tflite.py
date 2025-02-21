@@ -26,7 +26,7 @@ list_input_shapes = [
     (512, 512),
 ]
 
-save_dir = "outputs_tflite"
+save_dir = "outputs_tflite_fp32"
 if not os.path.exists(save_dir):
     os.makedirs(save_dir, exist_ok=True)
 
@@ -48,4 +48,5 @@ for torch_model in tqdm(list_torch_models):
         # Convert and serialize PyTorch model to a tflite flatbuffer. Note that we
         # are setting the model to evaluation mode prior to conversion.
         edge_model = ai_edge_torch.convert(model, sample_inputs)
-        edge_model.export(f"{save_dir}/torch_{str(torch_model).split()[1]}_{input_shape[0]}.tflite")
+        tflite_path = f"{save_dir}/torch_{str(torch_model).split()[1]}_{input_shape[0]}.tflite"
+        edge_model.export(tflite_path)
