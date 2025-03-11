@@ -31,18 +31,22 @@ sudo apt install libopencv-dev
 
 [ncnn benchmark](https://github.com/Tencent/ncnn/tree/master/benchmark)
 adb command access to device
-```commandline
+```
 adb kill-server
 adb connect <ip_address>:5555
 adb shell 
 
+cd /data/local/tmp/ 
 adb push benchncnn /data/local/tmp/
 adb push *.param /data/local/tmp/
 adb push run_ncnn_benchmark.sh /data/local/tmp/
 ```
 
 using my customized script
-```commandline
+```
+## original command
+./benchncnn 500 1 0 0 0 param=vit_b16.ncnn.param shape=[224,224,3,1]
+
 ## GPU
 ./run_ncnn_benchmark.sh 500 1 0 0 0 vit_b16.ncnn.param   
 
