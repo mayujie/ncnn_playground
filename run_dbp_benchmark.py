@@ -34,7 +34,7 @@ list_models = [
     "/nas/people/yujie_ma/ncnn_test/tflite_models/torch_resnet50_384.tflite",
     "/nas/people/yujie_ma/ncnn_test/tflite_models/torch_resnet50_512.tflite",
 
-    "/nas/people/yujie_ma/ncnn_test/tflite_models/torch_vit_b_16_224.tflite",
+    # "/nas/people/yujie_ma/ncnn_test/tflite_models/torch_vit_b_16_224.tflite",
 ]
 
 list_config_dict = [
@@ -45,34 +45,34 @@ list_config_dict = [
         "use_gpu": True,
         "gpu_backend": "cl",
     },
-    {
-        # Thread 8
-        "thds": 8,
-        "use_xnnpack": True,
-        "use_gpu": False,
-        "gpu_backend": None,
-    },
-    {
-        # Thread 4
-        "thds": 4,
-        "use_xnnpack": True,
-        "use_gpu": False,
-        "gpu_backend": None,
-    },
-    {
-        # Thread 2
-        "thds": 2,
-        "use_xnnpack": True,
-        "use_gpu": False,
-        "gpu_backend": None,
-    },
-    {
-        # Thread 1
-        "thds": 1,
-        "use_xnnpack": True,
-        "use_gpu": False,
-        "gpu_backend": None,
-    },
+    # {
+    #     # Thread 8
+    #     "thds": 8,
+    #     "use_xnnpack": True,
+    #     "use_gpu": False,
+    #     "gpu_backend": None,
+    # },
+    # {
+    #     # Thread 4
+    #     "thds": 4,
+    #     "use_xnnpack": True,
+    #     "use_gpu": False,
+    #     "gpu_backend": None,
+    # },
+    # {
+    #     # Thread 2
+    #     "thds": 2,
+    #     "use_xnnpack": True,
+    #     "use_gpu": False,
+    #     "gpu_backend": None,
+    # },
+    # {
+    #     # Thread 1
+    #     "thds": 1,
+    #     "use_xnnpack": True,
+    #     "use_gpu": False,
+    #     "gpu_backend": None,
+    # },
 ]
 
 list_input = [
@@ -84,17 +84,19 @@ list_input = [
 
 # api client
 api_client = ApiClient(
-    api_url=None,
-    token=None,
+    # api_url=None,
+    # token=None,
+    api_url="http://10.70.227.35/api/",
+    token="e9a4492c8ba7826ebab3f22bdf4b12b4fe3d6e00"
 )
-project = api_client.get_project(project_id=56)
+project = api_client.get_project(project_id=59)
 
 manager = api_client.get_tf_manager(project)
 
 executable = manager.get_executable(release_version="16.01.2025")
 
 save_dir = "outputs_tflite_benchmarks"
-LOG_FILENAME = f"benchmark_results_0220.log"
+LOG_FILENAME = f"benchmark_results_0224_tflite_fp16.log"
 log_file = os.path.join(save_dir, LOG_FILENAME)
 if not os.path.exists(save_dir):
     os.makedirs(save_dir, exist_ok=True)

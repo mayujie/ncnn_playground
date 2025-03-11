@@ -30,6 +30,34 @@ sudo apt install libopencv-dev
 ### ncnn benchmark
 
 [ncnn benchmark](https://github.com/Tencent/ncnn/tree/master/benchmark)
+adb command access to device
+```commandline
+adb kill-server
+adb connect <ip_address>:5555
+adb shell 
+
+adb push benchncnn /data/local/tmp/
+adb push *.param /data/local/tmp/
+adb push run_ncnn_benchmark.sh /data/local/tmp/
+```
+
+using my customized script
+```commandline
+## GPU
+./run_ncnn_benchmark.sh 500 1 0 0 0 vit_b16.ncnn.param   
+
+## CPU thds=1
+./run_ncnn_benchmark.sh 500 1 0 -1 0 torch_mobilenet_v2.ncnn.param                                                                                                              
+
+## CPU thds=2
+./run_ncnn_benchmark.sh 500 2 0 -1 0 torch_efficientnet_b0.ncnn.param  
+
+## CPU thds=4
+./run_ncnn_benchmark.sh 500 4 0 -1 0 torch_resnet50.ncnn.param                                                                                                                  
+
+## CPU thds=8
+./run_ncnn_benchmark.sh 500 8 0 -1 0 torch_resnet18.ncnn.param         
+```
 
 ### ncnn PTQ
 
@@ -39,7 +67,12 @@ https://github.com/Tencent/ncnn/blob/master/docs/how-to-use-and-FAQ/quantized-in
 
 ## 2.pnnx
 
-pnnx convert command: `pnnx vit_b16.onnx "inputshape=[1,3,224,224]"`
+pnnx convert command: 
+```
+pnnx vit_b16.onnx "inputshape=[1,3,224,224]"
+
+pnnx vit_b16_float16.onnx "inputshape=[1,3,224,224]f16"
+```
 
 [pnnx (PyTorch Neural Network eXchange)](https://github.com/pnnx/pnnx)
 
@@ -69,6 +102,19 @@ pnnx vit_b16.onnx inputshape=[1,3,224,224] debug=1
 
 [ONNX Simplifier](https://github.com/daquexian/onnx-simplifier)
 
+4. Convert the FP32 ONNX Model to FP16 ONNX Model
+
+    [Create Float16 and Mixed Precision Models](https://onnxruntime.ai/docs/performance/model-optimizations/float16.html) `pip install onnx onnxconverter-common`
+    ```
+    import onnx
+    from onnxconverter_common import float16
+    
+    model = onnx.load("path/to/model.onnx")
+    model_fp16 = float16.convert_float_to_float16(model)
+    onnx.save(model_fp16, "path/to/model_fp16.onnx")
+    
+    ```
+
 ## Reference issues
 
 ### pnnx
@@ -85,6 +131,10 @@ pnnx vit_b16.onnx inputshape=[1,3,224,224] debug=1
 ### tflite
 
 - [tflite benchmark tools](https://ai.google.dev/edge/litert/models/measurement)
+
+### ai-edge-torch
+- https://github.com/google-ai-edge/ai-edge-torch/issues/150
+- https://github.com/google-ai-edge/ai-edge-torch/blob/main/ai_edge_torch/generative/quantize/quant_recipes.py
 
 [Armv8 Neon technology](https://developer.arm.com/documentation/102474/0100/Fundamentals-of-Armv8-Neon-technology)
 

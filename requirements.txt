@@ -5,8 +5,10 @@ torchvision==0.20.1
 torchaudio==2.5.1
 onnx
 onnxruntime
+onnxconverter-common
 onnx-simplifier
 onnxsim
+git+https://github.com/alibaba/TinyNeuralNetwork.git
 #torch --find-links https://download.pytorch.org/whl/cpu
 #torchvision --find-links https://download.pytorch.org/whl/cpu
 #torchaudio --find-links https://download.pytorch.org/whl/cpu

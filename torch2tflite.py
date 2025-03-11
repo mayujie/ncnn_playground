@@ -2,6 +2,7 @@ import os
 import torch
 import pickle
 import ai_edge_torch
+from ai_edge_torch.generative.quantize import quant_recipes
 from tqdm import tqdm
 from torchvision import models
 from torchvision.models.resnet import resnet18
@@ -26,7 +27,8 @@ list_input_shapes = [
     (512, 512),
 ]
 
-save_dir = "outputs_tflite_fp32"
+save_dir = "outputs_tflite_fp16"
+# save_dir = "outputs_tflite_fp32"
 if not os.path.exists(save_dir):
     os.makedirs(save_dir, exist_ok=True)
 
@@ -47,6 +49,12 @@ for torch_model in tqdm(list_torch_models):
 
         # Convert and serialize PyTorch model to a tflite flatbuffer. Note that we
         # are setting the model to evaluation mode prior to conversion.
-        edge_model = ai_edge_torch.convert(model, sample_inputs)
+        # quant_config = quant_recipes.full_int8_dynamic_recipe()
+        # quant_config = quant_recipes.full_int8_weight_only_recipe()
+        quant_config = quant_recipes.full_fp16_recipe()
+        edge_model = ai_edge_torch.convert(model, sample_inputs, quant_config=quant_config)
+
+        # edge_model = ai_edge_torch.convert(model, sample_inputs)
+
         tflite_path = f"{save_dir}/torch_{str(torch_model).split()[1]}_{input_shape[0]}.tflite"
         edge_model.export(tflite_path)

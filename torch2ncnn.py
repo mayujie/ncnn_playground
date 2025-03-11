@@ -2,6 +2,7 @@ import os
 import torch
 import pnnx
 from torchvision import models
+from tqdm import tqdm
 from torchvision.models.resnet import resnet18
 from torchvision.models.resnet import resnet50
 from torchvision.models import mobilenet_v2
@@ -16,11 +17,13 @@ list_torch_models = [
     # vit_b_16
 ]
 
-save_dir = "outputs"
+USE_FP16 = True
+
+save_dir = "outputs_ncnn_fp16_gpu"
 if not os.path.exists(save_dir):
     os.makedirs(save_dir, exist_ok=True)
 
-for torch_model in list_torch_models:
+for torch_model in tqdm(list_torch_models):
     model = torch_model(pretrained=False)
     model.eval()
 
@@ -28,10 +31,12 @@ for torch_model in list_torch_models:
 
     opt_model = pnnx.export(
         model,
-        ptpath=os.path.join(os.path.dirname(__file__), save_dir, f"torch_{str(torch_model).split()[1]}.pt"),
+        ptpath=os.path.join(
+            os.path.dirname(__file__), save_dir,
+            f"torch_{str(torch_model).split()[1]}_fp16.pt" if USE_FP16 else f"torch_{str(torch_model).split()[1]}.pt"),
         inputs=x,
         # device='gpu',
-        fp16=False,
+        fp16=USE_FP16,
         optlevel=2,
     )
 
