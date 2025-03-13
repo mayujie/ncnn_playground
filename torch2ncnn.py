@@ -19,7 +19,7 @@ list_torch_models = [
 
 USE_FP16 = True
 
-save_dir = "outputs_ncnn_fp16_gpuhaha"
+save_dir = "ncnn_models/outputs_ncnn_fp16_gpu"
 if not os.path.exists(save_dir):
     os.makedirs(save_dir, exist_ok=True)
 

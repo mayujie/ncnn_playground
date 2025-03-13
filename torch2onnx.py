@@ -20,7 +20,7 @@ if __name__ == '__main__':
     dummy_input = torch.randn(1, 3, 224, 224).half() if FLOAT_OPTION == "float16" else torch.randn(1, 3, 224, 224)
     # dummy_input = torch.randn(1, 3, 224, 224)
 
-    save_dir = "outputs_onnx_fp16"
+    save_dir = "ncnn_models/outputs_onnx_fp16"
     if not os.path.exists(save_dir):
         os.makedirs(save_dir, exist_ok=True)
 

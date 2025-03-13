@@ -96,7 +96,7 @@ manager = api_client.get_tf_manager(project)
 
 executable = manager.get_executable(release_version="16.01.2025")
 
-save_dir = "outputs_tflite_benchmarks"
+save_dir = "results_tflite_benchmarks"
 LOG_FILENAME = f"benchmark_results_0312_tflite_int8_vit.log"
 log_file = os.path.join(save_dir, LOG_FILENAME)
 if not os.path.exists(save_dir):
