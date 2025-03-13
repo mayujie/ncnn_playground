@@ -94,17 +94,34 @@ https://github.com/Tencent/ncnn/blob/master/docs/how-to-use-and-FAQ/quantized-in
 https://github.com/Tencent/ncnn/blob/master/docs/how-to-use-and-FAQ/use-ncnnoptimize-to-optimize-model.md
 
 ### ncnn Quant 中文
-1. [Ncnn int8化](https://www.cnblogs.com/ayou27/p/16266497.html)
+1. **[Ncnn int8化](https://www.cnblogs.com/ayou27/p/16266497.html)**
 2. [ncnn INT8量化实战指南：利用百度智能云文心快码（Comate）优化深度学习模型](https://cloud.baidu.com/article/3321906)
 3. [ncnn 模型转换与量化：从理论到实践](https://cloud.baidu.com/article/3322108)
 4. [ncnn发布20210507版本，int8量化推理大幅优化超500%](https://baijiahao.baidu.com/s?id=1699724039745016586&wfr=spider&for=pc)
-5. [ncnn发布20210507版本，int8量化推理大优化超500% zhihu](https://zhuanlan.zhihu.com/p/370689914)
+5. **[ncnn发布20210507版本，int8量化推理大优化超500% zhihu](https://zhuanlan.zhihu.com/p/370689914)**
 
-[ncnn模型 int8量化](https://blog.csdn.net/flyfish1986/article/details/131411144)
+### [ncnn系列](https://so.csdn.net/so/search?q=ncnn&t=blog&u=shanglianlm)
 
-[ncnn框架量化工具过程记录笔记](https://zhuanlan.zhihu.com/p/362701667)
+- **[ncnn之二：Linux环境下ncnn安装+protobuf+opencv](https://blog.csdn.net/shanglianlm/article/details/103188992)**
+- [ncnn之六：ncnn量化(post-training quantization)三部曲 - ncnnoptimize](https://blog.csdn.net/shanglianlm/article/details/103746080)
+- [ncnn之七：ncnn量化(post-training quantization)三部曲 - ncnn2table](https://blog.csdn.net/shanglianlm/article/details/103745674)
+- https://developer.baidu.com/article/details/2969970
+- [ncnn之八：ncnn量化(post-training quantization)三部曲 - ncnn2int8](https://blog.csdn.net/shanglianlm/article/details/103745975)
 
-[ncnn框架编译和量化](https://zhuanlan.zhihu.com/p/543666918)
+**[ncnn模型 int8量化](https://blog.csdn.net/flyfish1986/article/details/131411144)**
+
+[使用NCNN的INT8量化方式进行推理](https://blog.csdn.net/tugouxp/article/details/122489836)
+
+[实战解析：如何使用NCNN进行INT8量化与部署优化](https://cloud.baidu.com/article/3321975)
+
+**[NCNN深度学习框架之Optimize优化器](https://www.cnblogs.com/wanggangtao/p/11313705.html)**
+
+**[NCNN量化之ncnn2table和ncnn2int8](https://www.cnblogs.com/wanggangtao/p/11352948.html)**
+
+**[ncnn框架量化工具过程记录笔记](https://zhuanlan.zhihu.com/p/362701667)**
+
+**[ncnn框架编译和量化](https://zhuanlan.zhihu.com/p/543666918)**
+
 ----
 [必看部署系列~懂你的神经网络量化教程：第一讲！](https://mp.weixin.qq.com/s?__biz=Mzg3ODU2MzY5MA==&mid=2247488318&idx=1&sn=048c1b78f3b2cb25c05abb115f20d6c6&chksm=cf108b3bf867022d1b214928102d65ed691c81955b59ca02bccdee92584ad9aa8e390e1d2978&token=1388685340&lang=zh_CN#rd)
 
@@ -184,7 +201,7 @@ pnnx vit_b16.onnx inputshape=[1,3,224,224] debug=1
 
 - [tflite benchmark tools](https://ai.google.dev/edge/litert/models/measurement)
 
-### ai-edge-torch
+### [ai-edge-torch](https://github.com/google-ai-edge/ai-edge-torch)
 - https://github.com/google-ai-edge/ai-edge-torch/issues/150
 - https://github.com/google-ai-edge/ai-edge-torch/blob/main/ai_edge_torch/generative/quantize/quant_recipes.py
 

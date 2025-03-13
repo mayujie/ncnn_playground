@@ -88,7 +88,8 @@ list_input = [
 api_client = ApiClient(
     # api_url=None,
     # token=None,
-
+    api_url="http://10.70.227.35/api/",
+    token="e9a4492c8ba7826ebab3f22bdf4b12b4fe3d6e00"
 )
 project = api_client.get_project(project_id=61)
 
