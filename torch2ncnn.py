@@ -19,15 +19,17 @@ list_torch_models = [
 
 USE_FP16 = True
 
-save_dir = "outputs_ncnn_fp16_gpu"
+save_dir = "outputs_ncnn_fp16_gpuhaha"
 if not os.path.exists(save_dir):
     os.makedirs(save_dir, exist_ok=True)
 
 for torch_model in tqdm(list_torch_models):
     model = torch_model(pretrained=False)
+    # model.half()
     model.eval()
 
     x = torch.rand(1, 3, 224, 224)
+    # x = torch.rand((1, 3, 224, 224), dtype=torch.float16)
 
     opt_model = pnnx.export(
         model,

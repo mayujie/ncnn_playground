@@ -14,65 +14,67 @@ ROOT_DIR = "/nas/people/yujie_ma/ncnn_test/tflite_models/"
 # )
 
 list_models = [
-    "/nas/people/yujie_ma/ncnn_test/tflite_models/torch_efficientnet_b0_224.tflite",
-    "/nas/people/yujie_ma/ncnn_test/tflite_models/torch_efficientnet_b0_256.tflite",
-    "/nas/people/yujie_ma/ncnn_test/tflite_models/torch_efficientnet_b0_384.tflite",
-    "/nas/people/yujie_ma/ncnn_test/tflite_models/torch_efficientnet_b0_512.tflite",
+    # "/nas/people/yujie_ma/ncnn_test/outputs_tflite_int8/torch_efficientnet_b0_224.tflite",
+    # "/nas/people/yujie_ma/ncnn_test/outputs_tflite_int8/torch_efficientnet_b0_256.tflite",
+    # "/nas/people/yujie_ma/ncnn_test/outputs_tflite_int8/torch_efficientnet_b0_384.tflite",
+    # "/nas/people/yujie_ma/ncnn_test/outputs_tflite_int8/torch_efficientnet_b0_512.tflite",
+    #
+    # "/nas/people/yujie_ma/ncnn_test/outputs_tflite_int8/torch_mobilenet_v2_224.tflite",
+    # "/nas/people/yujie_ma/ncnn_test/outputs_tflite_int8/torch_mobilenet_v2_256.tflite",
+    # "/nas/people/yujie_ma/ncnn_test/outputs_tflite_int8/torch_mobilenet_v2_384.tflite",
+    # "/nas/people/yujie_ma/ncnn_test/outputs_tflite_int8/torch_mobilenet_v2_512.tflite",
+    #
+    # "/nas/people/yujie_ma/ncnn_test/outputs_tflite_int8/torch_resnet18_224.tflite",
+    # "/nas/people/yujie_ma/ncnn_test/outputs_tflite_int8/torch_resnet18_256.tflite",
+    # "/nas/people/yujie_ma/ncnn_test/outputs_tflite_int8/torch_resnet18_384.tflite",
+    # "/nas/people/yujie_ma/ncnn_test/outputs_tflite_int8/torch_resnet18_512.tflite",
+    #
+    # "/nas/people/yujie_ma/ncnn_test/outputs_tflite_int8/torch_resnet50_224.tflite",
+    # "/nas/people/yujie_ma/ncnn_test/outputs_tflite_int8/torch_resnet50_256.tflite",
+    # "/nas/people/yujie_ma/ncnn_test/outputs_tflite_int8/torch_resnet50_384.tflite",
+    # "/nas/people/yujie_ma/ncnn_test/outputs_tflite_int8/torch_resnet50_512.tflite",
 
-    "/nas/people/yujie_ma/ncnn_test/tflite_models/torch_mobilenet_v2_224.tflite",
-    "/nas/people/yujie_ma/ncnn_test/tflite_models/torch_mobilenet_v2_256.tflite",
-    "/nas/people/yujie_ma/ncnn_test/tflite_models/torch_mobilenet_v2_384.tflite",
-    "/nas/people/yujie_ma/ncnn_test/tflite_models/torch_mobilenet_v2_512.tflite",
-
-    "/nas/people/yujie_ma/ncnn_test/tflite_models/torch_resnet18_224.tflite",
-    "/nas/people/yujie_ma/ncnn_test/tflite_models/torch_resnet18_256.tflite",
-    "/nas/people/yujie_ma/ncnn_test/tflite_models/torch_resnet18_384.tflite",
-    "/nas/people/yujie_ma/ncnn_test/tflite_models/torch_resnet18_512.tflite",
-
-    "/nas/people/yujie_ma/ncnn_test/tflite_models/torch_resnet50_224.tflite",
-    "/nas/people/yujie_ma/ncnn_test/tflite_models/torch_resnet50_256.tflite",
-    "/nas/people/yujie_ma/ncnn_test/tflite_models/torch_resnet50_384.tflite",
-    "/nas/people/yujie_ma/ncnn_test/tflite_models/torch_resnet50_512.tflite",
+    "/nas/people/yujie_ma/ncnn_test/outputs_tflite_int8/torch_vit_b_16_224.tflite",
 
     # "/nas/people/yujie_ma/ncnn_test/tflite_models/torch_vit_b_16_224.tflite",
 ]
 
 list_config_dict = [
+    # {
+    #     # GPU
+    #     "thds": -1,
+    #     "use_xnnpack": False,
+    #     "use_gpu": True,
+    #     "gpu_backend": "cl",
+    # },
     {
-        # GPU
-        "thds": -1,
-        "use_xnnpack": False,
-        "use_gpu": True,
-        "gpu_backend": "cl",
+        # Thread 8
+        "thds": 8,
+        "use_xnnpack": True,
+        "use_gpu": False,
+        "gpu_backend": None,
     },
-    # {
-    #     # Thread 8
-    #     "thds": 8,
-    #     "use_xnnpack": True,
-    #     "use_gpu": False,
-    #     "gpu_backend": None,
-    # },
-    # {
-    #     # Thread 4
-    #     "thds": 4,
-    #     "use_xnnpack": True,
-    #     "use_gpu": False,
-    #     "gpu_backend": None,
-    # },
-    # {
-    #     # Thread 2
-    #     "thds": 2,
-    #     "use_xnnpack": True,
-    #     "use_gpu": False,
-    #     "gpu_backend": None,
-    # },
-    # {
-    #     # Thread 1
-    #     "thds": 1,
-    #     "use_xnnpack": True,
-    #     "use_gpu": False,
-    #     "gpu_backend": None,
-    # },
+    {
+        # Thread 4
+        "thds": 4,
+        "use_xnnpack": True,
+        "use_gpu": False,
+        "gpu_backend": None,
+    },
+    {
+        # Thread 2
+        "thds": 2,
+        "use_xnnpack": True,
+        "use_gpu": False,
+        "gpu_backend": None,
+    },
+    {
+        # Thread 1
+        "thds": 1,
+        "use_xnnpack": True,
+        "use_gpu": False,
+        "gpu_backend": None,
+    },
 ]
 
 list_input = [
@@ -86,17 +88,15 @@ list_input = [
 api_client = ApiClient(
     # api_url=None,
     # token=None,
-    api_url="http://10.70.227.35/api/",
-    token="e9a4492c8ba7826ebab3f22bdf4b12b4fe3d6e00"
 )
-project = api_client.get_project(project_id=59)
+project = api_client.get_project(project_id=61)
 
 manager = api_client.get_tf_manager(project)
 
 executable = manager.get_executable(release_version="16.01.2025")
 
 save_dir = "outputs_tflite_benchmarks"
-LOG_FILENAME = f"benchmark_results_0224_tflite_fp16.log"
+LOG_FILENAME = f"benchmark_results_0312_tflite_int8_vit.log"
 log_file = os.path.join(save_dir, LOG_FILENAME)
 if not os.path.exists(save_dir):
     os.makedirs(save_dir, exist_ok=True)
@@ -104,9 +104,9 @@ if not os.path.exists(save_dir):
 # Open log file in append mode
 with (open(log_file, "a") as f):
     for model in tqdm(list_models, desc="benchmark model"):
-        if "vit_b_16" in model:
-            print(f'skip {model}......')
-            continue
+        # if "vit_b_16" in model:
+        #     print(f'skip {model}......')
+        #     continue
 
         interpreter = tf.lite.Interpreter(model_path=model)
         input_details = interpreter.get_input_details()
@@ -123,6 +123,7 @@ with (open(log_file, "a") as f):
                 model,
                 executable,
                 num_runs=500,
+                # num_runs=32,
                 max_secs=150,
                 num_threads=config_dict["thds"],
                 enable_op_profiling=False,
@@ -131,7 +132,7 @@ with (open(log_file, "a") as f):
                 use_hexagon=False,
                 use_gpu=config_dict["use_gpu"],
                 gpu_backend=config_dict["gpu_backend"],
-                gpu_fp16=True,
+                gpu_fp16=False,
                 require_full_delegation=False,
                 comment=bench_comment,
                 # inference_input=infer_input,

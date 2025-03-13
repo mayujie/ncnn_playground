@@ -21,7 +21,7 @@ for tensor_path in list_tensor_path:
     print(data.dtype)
     print("------")
 
-root_dir_tflite = 'outputs_tflite_fp32'
+root_dir_tflite = 'outputs_tflite_int8'
 tflite_models = sorted([os.path.join(root_dir_tflite, lite) for lite in os.listdir(root_dir_tflite)])
 
 for tflite_model_path in tqdm(tflite_models):

@@ -27,7 +27,8 @@ list_input_shapes = [
     (512, 512),
 ]
 
-save_dir = "outputs_tflite_fp16"
+save_dir = "outputs_tflite_int8"
+# save_dir = "outputs_tflite_fp16"
 # save_dir = "outputs_tflite_fp32"
 if not os.path.exists(save_dir):
     os.makedirs(save_dir, exist_ok=True)
@@ -44,14 +45,16 @@ for torch_model in tqdm(list_torch_models):
 
         # Example input (replace with your actual input)
         x = torch.randn(1, 3, *input_shape)
+        # x = torch.randint(-128, 127, (1, 3, *input_shape), dtype=torch.int8)
+
         print(x.shape, x.dtype)
         sample_inputs = (x,)
 
         # Convert and serialize PyTorch model to a tflite flatbuffer. Note that we
         # are setting the model to evaluation mode prior to conversion.
-        # quant_config = quant_recipes.full_int8_dynamic_recipe()
+        quant_config = quant_recipes.full_int8_dynamic_recipe()
         # quant_config = quant_recipes.full_int8_weight_only_recipe()
-        quant_config = quant_recipes.full_fp16_recipe()
+        # quant_config = quant_recipes.full_fp16_recipe()
         edge_model = ai_edge_torch.convert(model, sample_inputs, quant_config=quant_config)
 
         # edge_model = ai_edge_torch.convert(model, sample_inputs)

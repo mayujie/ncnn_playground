@@ -9,6 +9,25 @@ The repository which play with ncnn framework
 ### Download & Build status
 
 [how to build ncnn library](https://github.com/Tencent/ncnn/wiki/how-to-build)
+```
+cd <ncnn-root-dir>
+mkdir -p build-android-aarch64
+cd build-android-aarch64
+
+export ANDROID_NDK=/home/yujiema/project/ncnn_playground/pre_built_ncnn/android-ndk-r27c
+source ~/.bashrc
+source ~/.zshrc
+
+cmake -DCMAKE_TOOLCHAIN_FILE="$ANDROID_NDK/build/cmake/android.toolchain.cmake" \
+    -DANDROID_ABI="arm64-v8a" \
+    -DANDROID_PLATFORM=android-34 \
+    -DNCNN_VULKAN=ON \
+    -DCMAKE_BUILD_TYPE=Release \
+    ..
+
+make -j$(nproc)
+make install
+```
 
 [build ncnn library samples](https://github.com/Tencent/ncnn/blob/master/build.sh)
 
@@ -30,6 +49,7 @@ sudo apt install libopencv-dev
 ### ncnn benchmark
 
 [ncnn benchmark](https://github.com/Tencent/ncnn/tree/master/benchmark)
+
 adb command access to device
 ```
 adb kill-server
@@ -40,6 +60,8 @@ cd /data/local/tmp/
 adb push benchncnn /data/local/tmp/
 adb push *.param /data/local/tmp/
 adb push run_ncnn_benchmark.sh /data/local/tmp/
+
+adb pull /data/local/tmp/result_benchmark.ncnn.log .
 ```
 
 using my customized script
@@ -68,6 +90,32 @@ using my customized script
 https://github.com/Tencent/ncnn/tree/master/tools/quantize
 
 https://github.com/Tencent/ncnn/blob/master/docs/how-to-use-and-FAQ/quantized-int8-inference.md
+
+https://github.com/Tencent/ncnn/blob/master/docs/how-to-use-and-FAQ/use-ncnnoptimize-to-optimize-model.md
+
+### ncnn Quant 中文
+1. [Ncnn int8化](https://www.cnblogs.com/ayou27/p/16266497.html)
+2. [ncnn INT8量化实战指南：利用百度智能云文心快码（Comate）优化深度学习模型](https://cloud.baidu.com/article/3321906)
+3. [ncnn 模型转换与量化：从理论到实践](https://cloud.baidu.com/article/3322108)
+4. [ncnn发布20210507版本，int8量化推理大幅优化超500%](https://baijiahao.baidu.com/s?id=1699724039745016586&wfr=spider&for=pc)
+5. [ncnn发布20210507版本，int8量化推理大优化超500% zhihu](https://zhuanlan.zhihu.com/p/370689914)
+
+[ncnn模型 int8量化](https://blog.csdn.net/flyfish1986/article/details/131411144)
+
+[ncnn框架量化工具过程记录笔记](https://zhuanlan.zhihu.com/p/362701667)
+
+[ncnn框架编译和量化](https://zhuanlan.zhihu.com/p/543666918)
+----
+[必看部署系列~懂你的神经网络量化教程：第一讲！](https://mp.weixin.qq.com/s?__biz=Mzg3ODU2MzY5MA==&mid=2247488318&idx=1&sn=048c1b78f3b2cb25c05abb115f20d6c6&chksm=cf108b3bf867022d1b214928102d65ed691c81955b59ca02bccdee92584ad9aa8e390e1d2978&token=1388685340&lang=zh_CN#rd)
+
+[部署系列——神经网络INT8量化教程第一讲！](https://zhuanlan.zhihu.com/p/405571578)
+
+----
+[NCNN Conv量化详解（一）](https://zhuanlan.zhihu.com/p/71881443)
+
+[NCNN量化详解（二）](https://zhuanlan.zhihu.com/p/72375164)
+
+[mmdeploy int8 量化 ncnn ViT part2](https://zhuanlan.zhihu.com/p/554022835)
 
 ## 2.pnnx
 
