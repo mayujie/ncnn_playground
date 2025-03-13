@@ -5,7 +5,7 @@ import tensorflow as tf
 import torch
 from tqdm import tqdm
 
-root_dir_tensor = "outputs_input_pickles"
+root_dir_tensor = "dummy_input_pickles"
 list_tensor_path = sorted(
     [
         os.path.join(root_dir_tensor, t) for t in os.listdir(root_dir_tensor) if
@@ -21,7 +21,7 @@ for tensor_path in list_tensor_path:
     print(data.dtype)
     print("------")
 
-root_dir_tflite = 'outputs_tflite_int8'
+root_dir_tflite = 'tflite_models/outputs_tflite_int8'
 tflite_models = sorted([os.path.join(root_dir_tflite, lite) for lite in os.listdir(root_dir_tflite)])
 
 for tflite_model_path in tqdm(tflite_models):

@@ -27,7 +27,7 @@ list_input_shapes = [
     (512, 512),
 ]
 
-save_dir = "outputs_tflite_int8"
+save_dir = "tflite_models/outputs_tflite_int8"
 # save_dir = "outputs_tflite_fp16"
 # save_dir = "outputs_tflite_fp32"
 if not os.path.exists(save_dir):
